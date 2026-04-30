@@ -40,6 +40,9 @@ export default function Modal({ isOpen, onClose, title, children, maxWidth = '50
               left: '50%',
               transform: 'translate(-50%, -50%)',
               width: `min(${maxWidth}, calc(100vw - 32px))`,
+              maxHeight: 'calc(100dvh - 32px)',
+              display: 'flex',
+              flexDirection: 'column',
               background: 'var(--bg-panel)',
               border: '1px solid var(--line)',
               borderRadius: '20px',
@@ -48,7 +51,7 @@ export default function Modal({ isOpen, onClose, title, children, maxWidth = '50
               overflow: 'hidden',
             }}
           >
-            <div style={{ padding: '24px', borderBottom: '1px solid var(--line-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ padding: '24px', borderBottom: '1px solid var(--line-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
               <h3 style={{ margin: 0, fontFamily: '"Outfit", sans-serif', color: 'var(--text-primary)', fontSize: '1.1rem' }}>{title}</h3>
               <button
                 onClick={onClose}
@@ -57,7 +60,7 @@ export default function Modal({ isOpen, onClose, title, children, maxWidth = '50
                 ×
               </button>
             </div>
-            <div style={{ padding: '24px' }}>{children}</div>
+            <div style={{ padding: '24px', overflowY: 'auto', flex: 1 }}>{children}</div>
           </motion.div>
         </>
       )}
